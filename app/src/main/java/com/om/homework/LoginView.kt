@@ -7,12 +7,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class LoginView : FrameLayout {
 
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
     private lateinit var loginButton: Button
+    private lateinit var auth: FirebaseAuth;
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -28,6 +32,8 @@ class LoginView : FrameLayout {
     }
 
     private fun init(context: Context) {
+        auth = Firebase.auth
+
         LayoutInflater.from(context).inflate(R.layout.login_layout, this, true)
 
         emailText = findViewById(R.id.email_input)
@@ -38,11 +44,7 @@ class LoginView : FrameLayout {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
 
-            if (email.isNotBlank() && password.isNotBlank()) {
-                Toast.makeText(context, "Email: $email, Password: $password", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(context, "Please enter both email and password", Toast.LENGTH_SHORT).show()
-            }
+            auth.createUserWithEmailAndPassword(email, password)
         }
     }
 }
