@@ -47,6 +47,11 @@ class MainActivity : ComponentActivity() {
                     if (task.isSuccessful) {
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth?.currentUser
+                        Toast.makeText(
+                            baseContext,
+                            "Successfully authenticated.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(
