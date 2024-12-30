@@ -24,8 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ItemsListView"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity android:name=".DetailActivity"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity android:name=".DetailActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
 
     </application>
 

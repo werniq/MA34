@@ -35,16 +35,8 @@ class CustomAdapter(
         fruitName.text = fruitList[position]
         fruitImage.setImageResource(images[position])
 
-        view.setOnClickListener {
-            val intent = Intent(context, DetailActivity::class.java).apply {
-                putExtra("name", fruitList[position])
-                putExtra("image", images[position])
-                putExtra("description", "${fruitList[position]} is a delicious fruit!")
-            }
-            context.startActivity(intent)
-        }
-
         return view
     }
+
 
 }
