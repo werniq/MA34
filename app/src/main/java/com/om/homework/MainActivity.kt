@@ -1,6 +1,7 @@
 package com.om.homework
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -9,9 +10,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.navigation.fragment.NavHostFragment
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
@@ -40,23 +38,31 @@ class MainActivity : ComponentActivity() {
                     "Email and Password cannot be empty",
                     Toast.LENGTH_SHORT
                 ).show()
+                return@OnClickListener
             }
-            val TAG = "A";
+
+            val TAG = "MainActivity"
             auth?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth?.currentUser
                         Toast.makeText(
-                            baseContext,
+                            this@MainActivity,
                             "Successfully authenticated.",
                             Toast.LENGTH_SHORT,
                         ).show()
+
+                        // Correct usage of context
+                        Toast.makeText(this@MainActivity, "Login successful", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@MainActivity, ItemsListView::class.java)
+                        startActivity(intent)
+                        Toast.makeText(this@MainActivity, "Forwarding...", Toast.LENGTH_SHORT).show()
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(
-                            baseContext,
-                            "Authentication failed.",
+                            this@MainActivity,
+                            "Authentication failed: ${task.exception?.message}",
                             Toast.LENGTH_SHORT,
                         ).show()
                     }
