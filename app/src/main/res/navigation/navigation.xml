@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        tools:layout="@layout/login_layout"
+        android:name="com.om.homework.MainActivity"
+        android:label="MainActivity" />
+    <activity
+        tools:layout="@layout/items_list_view"
+        android:id="@+id/itemsListView"
+        android:name="com.om.homework.ItemsListView"
+        android:label="ItemsListView" />
+    <activity
+        tools:layout="@layout/detailed_item_view"
+        android:id="@+id/detailActivity"
+        android:name="com.om.homework.DetailActivity"
+        android:label="DetailActivity" />
+</navigation>
