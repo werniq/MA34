@@ -22,7 +22,6 @@ class DetailActivity : AppCompatActivity() {
         val image = intent.getIntExtra("image", 0)
         val description = intent.getStringExtra("description")
 
-        // Set data to the views
         itemName.text = name
         itemImage.setImageResource(image)
         itemDescription.text = description
