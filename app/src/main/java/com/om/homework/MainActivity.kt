@@ -53,7 +53,6 @@ class MainActivity : ComponentActivity() {
                             Toast.LENGTH_SHORT,
                         ).show()
 
-                        // Correct usage of context
                         Toast.makeText(this@MainActivity, "Login successful", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@MainActivity, ItemsListView::class.java)
                         startActivity(intent)
